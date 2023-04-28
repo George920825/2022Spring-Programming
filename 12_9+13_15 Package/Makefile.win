@@ -1,0 +1,37 @@
+# Project: 0620
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ex13_15.o OvernightPackage.o Package.o TwoDayPackage.o
+LINKOBJ  = ex13_15.o OvernightPackage.o Package.o TwoDayPackage.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 0620.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+ex13_15.o: ex13_15.cpp
+	$(CPP) -c ex13_15.cpp -o ex13_15.o $(CXXFLAGS)
+
+OvernightPackage.o: OvernightPackage.cpp
+	$(CPP) -c OvernightPackage.cpp -o OvernightPackage.o $(CXXFLAGS)
+
+Package.o: Package.cpp
+	$(CPP) -c Package.cpp -o Package.o $(CXXFLAGS)
+
+TwoDayPackage.o: TwoDayPackage.cpp
+	$(CPP) -c TwoDayPackage.cpp -o TwoDayPackage.o $(CXXFLAGS)
